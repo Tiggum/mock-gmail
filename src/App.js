@@ -36,14 +36,26 @@ class App extends React.Component {
     }
   }
 
+  // _sortEmailsByID = () => {
+  //   let emails = this.state.allEmails;
+  //   emails.sort((a, b) => {
+  //     return a.id - b.id;
+  //   })
+  //   return emails;
+  // }
+
   handleSendEmail = (e) => {
     e.preventDefault();
+    // let sortedEmails = this._sortEmailsByID();
+    // let newEmailID = sortedEmails[sortedEmails.length - 1].id + 1;
+
     let [emailTo, emailFrom, emailSubject, emailMsg] = Array.from(e.target.elements).slice(1, 5).map(item => item.value);
     let formdata = {
       sender: emailTo,
       recipient: emailFrom,
       subject: emailSubject,
       message: emailMsg,
+      // id: newEmailID,
     }
     
     fetch(`${emailURL}/send`, {
